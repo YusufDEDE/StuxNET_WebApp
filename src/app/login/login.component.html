@@ -1,11 +1,11 @@
 <div class="login-box">
-  <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
-  </div>
+    <div class="login-logo">
+        <img src="../../StuxNET.ico" class="rounded mx-auto d-block" alt="Bank of StuxNET"/>
+      </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Sign in Bank of StuxNET</p>
 
       <form [formGroup]="loginForm">
         <div class="input-group mb-3">
@@ -35,18 +35,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                id="rememberMe"
-              />
-              <label class="custom-control-label" for="rememberMe"
-                >Remember me</label
-              >
-            </div>
-          </div>
+          
           <!-- /.col -->
           <div class="col-4">
             <button
@@ -57,29 +46,24 @@
               Sign In
             </button>
           </div>
-          <!-- /.col -->
+          
+          
+          <div>
+            <button
+            [routerLink]="['/register']"
+            type="submit"
+            class="btn btn-primary btn-flat"
+            style="position: absolute; right: 20px; width: 100px;"
+            >
+              Register
+            </button>
+          </div>
         </div>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
       <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a>I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a [routerLink]="['/register']" class="text-center"
-          >Register a new membership</a
-        >
-      </p>
+      
+      
     </div>
     <!-- /.login-card-body -->
   </div>
