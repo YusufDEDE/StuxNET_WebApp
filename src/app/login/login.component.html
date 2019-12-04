@@ -1,70 +1,65 @@
-<div class="login-box">
-    <div class="login-logo">
-        <img src="../../StuxNET.ico" class="rounded mx-auto d-block" alt="Bank of StuxNET"/>
+<div>
+    <!-- <img src="../../assets/img/background-arka-plan-mavi-tahta.jpg" style="background-image: image();" alt="Background"> -->
+    <div class="login-box">
+        <div class="login-logo">
+            <img src="../../assets/img/StuxNET.ico" style="width:100px;height:100px;" alt="Bank of StuxNET"/>
+          </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Sign in Bank of StuxNET</p>
+    
+          <form [formGroup]="loginForm">
+            <div class="input-group mb-3">
+              <input
+                formControlName="TC Number"
+                type="text"
+                class="form-control"
+                placeholder="TC Number"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control"
+                placeholder="Password"
+              />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <button
+                  (click)="logIn()"
+                  type="submit"
+                  class="btn btn-primary btn-block btn-flat"
+                >
+                  Sign In
+                </button>
+              </div>
+              <div>
+                <button
+                [routerLink]="['/register']"
+                type="submit"
+                class="btn btn-primary btn-flat"
+                style="position: absolute; right: 20px; width: 100px;"
+                >
+                  Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in Bank of StuxNET</p>
-
-      <form [formGroup]="loginForm">
-        <div class="input-group mb-3">
-          <input
-            formControlName="email"
-            type="email"
-            class="form-control"
-            placeholder="Email"
-          />
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input
-            formControlName="password"
-            type="password"
-            class="form-control"
-            placeholder="Password"
-          />
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          
-          <!-- /.col -->
-          <div class="col-4">
-            <button
-              (click)="logIn()"
-              type="submit"
-              class="btn btn-primary btn-block btn-flat"
-            >
-              Sign In
-            </button>
-          </div>
-          
-          
-          <div>
-            <button
-            [routerLink]="['/register']"
-            type="submit"
-            class="btn btn-primary btn-flat"
-            style="position: absolute; right: 20px; width: 100px;"
-            >
-              Register
-            </button>
-          </div>
-        </div>
-      </form>
-
-      <!-- /.social-auth-links -->
-      
-      
     </div>
-    <!-- /.login-card-body -->
-  </div>
 </div>
+

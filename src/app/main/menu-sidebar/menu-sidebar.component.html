@@ -2,12 +2,12 @@
   <!-- Brand Logo -->
   <a [routerLink]="['/']" class="brand-link">
     <img
-      src="assets/img/AdminLTELogo.png"
-      alt="AdminLTE Logo"
+      src="assets/img/StuxNET.ico"
+      alt="Bank of StuxNET"
       class="brand-image img-circle elevation-3"
       style="opacity: .8"
     />
-    <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <span class="brand-text font-weight-light">Bank Of StuxNET</span>
   </a>
 
   <!-- Sidebar -->
@@ -22,7 +22,7 @@
         />
       </div>
       <div class="info">
-        <a [routerLink]="['/profile']" class="d-block">Alexander Pierce</a>
+        <a [routerLink]="['/profile']" class="d-block">Alexander Pierce</a>     <!-- İsim çekilecek..-->
       </div>
     </div>
 
@@ -34,21 +34,35 @@
         role="menu"
         data-accordion="false"
       >
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
         <li class="nav-item">
           <a [routerLink]="['/']" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-angle-right"></i>
             <p>
-              Dashboard
+              Para Yatır
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/blank']" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+          <a [routerLink]="['/']" class="nav-link">
+            <i class="nav-icon fas fa-angle-left"></i>
             <p>
-              Blank
+              Para Çek
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">
+            <i class="nav-icon fas fa-compress-arrows-alt"></i>
+            <p>
+              Virman
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">
+            <i class="nav-icon far fa-paper-plane"></i>
+            <p>
+              Havale
             </p>
           </a>
         </li>
