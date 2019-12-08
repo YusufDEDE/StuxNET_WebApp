@@ -51,9 +51,8 @@ export class AppService {
   }
 
   logout() {
-    
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    this.currentUserSubject.next(null);
     console.log("heyyy");
   }
 }

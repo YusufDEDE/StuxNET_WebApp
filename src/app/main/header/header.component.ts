@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppService } from 'src/app/utils/services/app.service';
+import { User } from '../../models/user'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +12,13 @@ import { AppService } from 'src/app/utils/services/app.service';
 export class HeaderComponent implements OnInit {
   @Output() toggleMenuSidebar: EventEmitter<any> = new EventEmitter<any>();
   public searchForm: FormGroup;
-
-  constructor(private appService: AppService) {}
+  currentUser: User;
+  constructor(
+    private appService: AppService,
+    private router: Router
+    ) {
+      this.appService.currentUser.subscribe(x => this.currentUser = x);
+    }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -21,5 +28,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.appService.logout();
+    this.router.navigate(['/login']);
   }
 }
