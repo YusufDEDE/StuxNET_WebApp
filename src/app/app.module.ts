@@ -23,6 +23,7 @@ import { DepositComponent } from './pages/deposit/deposit.component';
 import { WithdrawComponent } from './pages/withdraw/withdraw.component';
 import { VirmanComponent } from './pages/virman/virman.component';
 import { EftComponent } from './pages/eft/eft.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { EftComponent } from './pages/eft/eft.component';
     DepositComponent,
     WithdrawComponent,
     VirmanComponent,
-    EftComponent
+    EftComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

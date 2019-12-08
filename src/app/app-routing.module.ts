@@ -5,7 +5,6 @@ import { BlankComponent } from './pages/blank/blank.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
 import { AccountlistComponent } from './pages/accountlist/accountlist.component';
@@ -15,6 +14,7 @@ import { DepositComponent } from './pages/deposit/deposit.component';
 import { WithdrawComponent } from "./pages/withdraw/withdraw.component";
 import { VirmanComponent } from "./pages/virman/virman.component";
 import { EftComponent } from './pages/eft/eft.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 const routes: Routes = [
   {
@@ -33,7 +33,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        component: DashboardComponent
+        component: HomepageComponent
       },
       {
         path:'accountlist',
