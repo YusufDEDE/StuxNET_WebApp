@@ -45,7 +45,28 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         if (this.f.tc.value == '' && this.f.pw.value == ''){
-            this.alertService.error("Tc veya şifre boş bırakma!");
+            this.alertService.error("Tc veya şifre boş bırakılamaz!");
+            this.loading = false;
+        }else{
+            this.loading = true;
+            console.log(this.f.tc.value, this.f.pw.value);
+            this.authenticationService.login(this.f.tc.value, this.f.pw.value)
+                
+                .pipe(first())
+                .subscribe(
+                    data => {
+                        if(data.status != true || data.status == 500)
+                        {
+                            this.alertService.error("Tc veya şifre hatalı!");
+                            this.loading = false;
+                            this.f.tc.setValue('');
+                            this.f.pw.setValue('');
+                            
+                        }
+                        else{
+                            this.router.navigate([this.returnUrl]);
+                        }
+                    });
         }
         this.submitted = true;
 
@@ -54,25 +75,7 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        this.loading = true;
-        console.log(this.f.tc.value, this.f.pw.value);
-        this.authenticationService.login(this.f.tc.value, this.f.pw.value)
-            
-            .pipe(first())
-            .subscribe(
-                data => {
-                    if(data.status != true || data.status == 500)
-                    {
-                        this.alertService.error("Tc veya şifre hatalı!");
-                        this.loading = false;
-                        this.f.tc.setValue('');
-                        this.f.pw.setValue('');
-                        
-                    }
-                    else{
-                        this.router.navigate([this.returnUrl]);
-                    }
-                });
+       
 
             
     
