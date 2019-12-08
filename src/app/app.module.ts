@@ -15,9 +15,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
-import { MessagesDropdownMenuComponent } from './main/header/messages-dropdown-menu/messages-dropdown-menu.component';
-import { NotificationsDropdownMenuComponent } from './main/header/notifications-dropdown-menu/notifications-dropdown-menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountlistComponent } from './pages/accountlist/accountlist.component';
+import { AccountTransactionComponent } from './pages/account-transaction/account-transaction.component';
+import { MoneyTransferComponent } from './pages/money-transfer/money-transfer.component';
+import { DepositComponent } from './pages/deposit/deposit.component';
+import { WithdrawComponent } from './pages/withdraw/withdraw.component';
+import { VirmanComponent } from './pages/virman/virman.component';
+import { EftComponent } from './pages/eft/eft.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +36,13 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     RegisterComponent,
     DashboardComponent,
-    MessagesDropdownMenuComponent,
-    NotificationsDropdownMenuComponent
+    AccountlistComponent,
+    AccountTransactionComponent,
+    MoneyTransferComponent,
+    DepositComponent,
+    WithdrawComponent,
+    VirmanComponent,
+    EftComponent
   ],
   imports: [
     BrowserModule,
