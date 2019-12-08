@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountlistComponent } from './pages/accountlist/accountlist.component';
@@ -36,7 +35,6 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     BlankComponent,
     ProfileComponent,
     RegisterComponent,
-    DashboardComponent,
     AccountlistComponent,
     AccountTransactionComponent,
     MoneyTransferComponent,
