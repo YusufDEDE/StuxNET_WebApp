@@ -15,6 +15,7 @@ import { WithdrawComponent } from "./pages/withdraw/withdraw.component";
 import { VirmanComponent } from "./pages/virman/virman.component";
 import { EftComponent } from './pages/eft/eft.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { PayBillComponent } from "./pages/pay-bill/pay-bill.component";
 
 const routes: Routes = [
   {
@@ -62,6 +63,10 @@ const routes: Routes = [
       {
         path:'eft',
         component:EftComponent
+      },
+      {
+        path:'payment',
+        component:PayBillComponent
       }
     ]
   },
