@@ -7,16 +7,16 @@
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Sign in Bank of StuxNET</p>
+          <p class="login-box-msg">Oturum Aç</p>
     
           <form [formGroup]="loginForm">
             <div class="input-group mb-3">
               <input
-                formControlName="TC Number"
-                type="text"
+                formControlName="tc"
+                type="number"
                 class="form-control"
-                placeholder="TC Number"
-              />
+                placeholder="TC Kimlik Numarası"
+                ngModel required/>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -25,11 +25,11 @@
             </div>
             <div class="input-group mb-3">
               <input
-                formControlName="password"
+                formControlName="pw"
                 type="password"
                 class="form-control"
-                placeholder="Password"
-              />
+                placeholder="Şifre"
+                ngModel required/>
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-lock"></span>
@@ -39,7 +39,7 @@
             <div class="row">
               <div class="col-4">
                 <button
-                  (click)="logIn()"
+                  (click)="onSubmit()"
                   type="submit"
                   class="btn btn-primary btn-block btn-flat"
                 >

@@ -1,38 +1,80 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { AppService } from '../utils/services/app.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { first } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  public loginForm: FormGroup;
-  constructor(
-    private renderer: Renderer2,
-    private toastr: ToastrService,
-    private appService: AppService
-  ) {}
+export class LoginComponent implements OnInit {
+    loginForm: FormGroup;
+    loading = false;
+    submitted = false;
+    returnUrl: string;
+    
 
-  ngOnInit() {
-    this.renderer.addClass(document.body, 'login-page');
-    this.loginForm = new FormGroup({
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required)
-    });
-  }
-
-  logIn() {
-    if (this.loginForm.valid) {
-      this.appService.login();
-    } else {
-      this.toastr.error('Hello world!', 'Toastr fun!');
+    constructor(
+        private formBuilder: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+        private authenticationService: AppService,
+        private alertService: ToastrService
+    ) {
+        // redirect to home if already logged in
+        if (this.authenticationService.currentUserValue) { 
+            this.router.navigate(['/']);
+        }
     }
-  }
 
-  ngOnDestroy() {
-    this.renderer.removeClass(document.body, 'login-page');
-  }
+    ngOnInit() {
+        this.loginForm = this.formBuilder.group({
+            tc: ['', Validators.required],
+            pw: ['', Validators.required]
+        });
+
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
+
+    // convenience getter for easy access to form fields
+    get f() { return this.loginForm.controls; }
+
+    onSubmit() {
+        if (this.f.tc.value == '' && this.f.pw.value == ''){
+            this.alertService.error("Tc veya şifre boş bırakma!");
+        }
+        this.submitted = true;
+
+        // stop here if form is invalid
+        if (this.loginForm.invalid) {
+            return;
+        }
+
+        this.loading = true;
+        console.log(this.f.tc.value, this.f.pw.value);
+        this.authenticationService.login(this.f.tc.value, this.f.pw.value)
+            
+            .pipe(first())
+            .subscribe(
+                data => {
+                    if(data.status != true || data.status == 500)
+                    {
+                        this.alertService.error("Tc veya şifre hatalı!");
+                        this.loading = false;
+                        this.f.tc.setValue('');
+                        this.f.pw.setValue('');
+                        
+                    }
+                    else{
+                        this.router.navigate([this.returnUrl]);
+                    }
+                });
+
+            
+    
+    }
 }

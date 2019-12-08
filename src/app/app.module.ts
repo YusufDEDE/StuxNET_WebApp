@@ -17,6 +17,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MessagesDropdownMenuComponent } from './main/header/messages-dropdown-menu/messages-dropdown-menu.component';
 import { NotificationsDropdownMenuComponent } from './main/header/notifications-dropdown-menu/notifications-dropdown-menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NotificationsDropdownMenuComponent } from './main/header/notifications-
       timeOut: 10000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
-    })
+    }),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
