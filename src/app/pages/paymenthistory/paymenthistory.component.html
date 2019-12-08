@@ -14,4 +14,45 @@
       </div>
     </div>
     <!-- /.container-fluid -->
+
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Hesaplar</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Hesap Numarası </th>
+                  <th>Fatura ID </th>
+                  <th>Fatura Türü </th>
+                  <th>Ödeme Tutarı </th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody >
+                <tr *ngFor="let payHis of paymentHistory">
+                  <td>{{payHis.accNo}} - {{payHis.additionalNo}}</td>
+                  <td>{{payHis.BillNumber}}</td>
+                  <td>{{payHis.BillType}}</td>
+                  <td>{{payHis.Payment}}</td>                  
+                  <td class="far fa-trash-alt" onclick=""></td>
+                </tr>
+                                        
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->           
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+
   </section>
