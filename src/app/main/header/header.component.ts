@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AppService } from 'src/app/utils/services/app.service';
 import { User } from '../../models/user'
@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
     ) {
       this.appService.currentUser.subscribe(x => this.currentUser = x);
     }
+  @Input() date:Date;
 
   ngOnInit() {
     this.searchForm = new FormGroup({

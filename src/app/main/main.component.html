@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <app-header (toggleMenuSidebar)="toggleMenuSidebar()"></app-header>
+  <app-header (toggleMenuSidebar)="toggleMenuSidebar()" [date] ="date"></app-header>
 
   <app-menu-sidebar
     (mainSidebarHeight)="mainSidebarHeight($event)"

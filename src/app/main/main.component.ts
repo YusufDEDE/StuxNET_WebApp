@@ -11,6 +11,8 @@ export class MainComponent implements OnInit {
 
   constructor(private renderer: Renderer2) {}
 
+  date = new Date();
+
   ngOnInit() {}
 
   mainSidebarHeight(height) {

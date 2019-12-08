@@ -23,6 +23,9 @@
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto" *ngIf="currentUser">
+    <li class ="nav-item">
+        <h5 style="padding: 8px;">{{date | date : 'fullDate'}}</h5>
+    </li>
     <li class="nav-item">
       <a
         class="nav-link"
