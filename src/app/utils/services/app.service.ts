@@ -12,7 +12,7 @@ import { User } from '../../models/user';
 
 export class AppService {
   public user = {
-    firstName: 'Alexander',
+    firstName: 'Alexandesr',
     lastName: 'Pierce',
     image: 'assets/img/user2-160x160.jpg'
   };
@@ -53,6 +53,6 @@ export class AppService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
-    console.log("heyyy");
+    console.log("logout!");
   }
 }
