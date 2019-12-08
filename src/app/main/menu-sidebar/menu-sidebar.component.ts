@@ -9,7 +9,6 @@ import {
   EventEmitter
 } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import axios from 'axios';
 
 @Component({
