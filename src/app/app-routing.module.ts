@@ -16,6 +16,7 @@ import { VirmanComponent } from "./pages/virman/virman.component";
 import { EftComponent } from './pages/eft/eft.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PayBillComponent } from "./pages/pay-bill/pay-bill.component";
+import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
       {
         path:'payment',
         component:PayBillComponent
+      },
+      {
+        path:'paymenthistory',
+        component:PaymenthistoryComponent
       }
     ]
   },

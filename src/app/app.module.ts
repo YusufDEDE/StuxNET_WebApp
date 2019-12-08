@@ -24,6 +24,7 @@ import { VirmanComponent } from './pages/virman/virman.component';
 import { EftComponent } from './pages/eft/eft.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PayBillComponent } from './pages/pay-bill/pay-bill.component';
+import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PayBillComponent } from './pages/pay-bill/pay-bill.component';
     VirmanComponent,
     EftComponent,
     HomepageComponent,
-    PayBillComponent
+    PayBillComponent,
+    PaymenthistoryComponent
   ],
   imports: [
     BrowserModule,
