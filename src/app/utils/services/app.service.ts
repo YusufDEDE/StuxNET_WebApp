@@ -11,11 +11,7 @@ import { User } from '../../models/user';
 })
 
 export class AppService {
-  public user = {
-    firstName: 'Alexandesr',
-    lastName: 'Pierce',
-    image: 'assets/img/user2-160x160.jpg'
-  };
+  
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
@@ -33,7 +29,7 @@ export class AppService {
     return this.currentUserSubject.value;
 }
 
-  login(tc: bigint, pw: string) {
+  login(tc, pw) {
     console.log(tc, pw);
         return this.http.post<any>(`https://stuxnetapi.herokuapp.com/login`, { tc, pw })
             .pipe(map(user => {
