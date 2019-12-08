@@ -28,7 +28,7 @@
             <form [formGroup]="">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Ek Numara</label>
+                  <label for="exampleInputPassword1">Para Yatırılacak Hesap</label>
                   <select class="form-control">
                       <option *ngFor="let opt of accounts" [value]="opt.accNo" [selected]="opt.selected">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.balance}}</option>
                     
