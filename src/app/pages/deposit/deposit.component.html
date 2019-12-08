@@ -19,7 +19,7 @@
     <div class="container-fluid">
       <div class="row">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-sm-10">
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
@@ -29,7 +29,10 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputPassword1">Ek Numara</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ek No">
+                  <select class="form-control">
+                      <option *ngFor="let opt of accounts" [value]="opt.accNo" [selected]="opt.selected">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.balance}}</option>
+                    
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword2">Yatıralacak Miktar</label>
