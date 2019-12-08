@@ -15,3 +15,43 @@
     </div>
     <!-- /.container-fluid -->
   </section>
+
+  <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Gerekli Bilgileri Girin!</h3>
+              </div>
+              <form [formGroup]="">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Ödeme Yapılacak Hesap Numarası</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Hesap No">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Ödeme Yapılacak Hesap Ek Numarası</label>
+                    <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Ek No">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Fatura Numarası</label>
+                    <input type="text" class="form-control" id="exampleInputPassword3" placeholder="Fatura ID">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword2">Fatura Tutarı</label>
+                    <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Tutar">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Ödeme Yap</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
