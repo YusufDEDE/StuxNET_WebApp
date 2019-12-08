@@ -21,8 +21,9 @@
           alt="User Image"
         />
       </div>
-      <div class="info">
-        <a [routerLink]="['/profile']" class="d-block">{{win}}</a>     <!-- İsim çekilecek..-->
+      <div class="info" *ngFor="let user of profile">
+
+        <a [routerLink]="['/profile']" class="d-block">{{user.firstName}} {{user.lastName}}</a>     <!-- İsim çekilecek..-->
       </div>
     </div>
 

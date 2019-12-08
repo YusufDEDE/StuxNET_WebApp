@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import axios from 'axios';
 
 @Component({
   selector: 'app-menu-sidebar',
@@ -20,45 +21,42 @@ export class MenuSidebarComponent implements OnInit, AfterViewInit {
   @ViewChild('mainSidebar', { static: false }) mainSidebar;
   @Output() mainSidebarHeight: EventEmitter<any> = new EventEmitter<any>();
 
-  win;
+  
+
+  tc: any;
+  profile: any[] = [];
   constructor(
     public appService: AppService,
-    private http : HttpClient,
     private authenticationService: AppService
     ) {}
 
     
   ngOnInit() {
     const currentUser = this.authenticationService.currentUserValue;
-    this.win = localStorage.getItem("currentUser");
-    this.updateProfileInformation(currentUser.token);
+    this.tc = localStorage.getItem("tc");
+    this.getProfile(currentUser.token, this.tc);
   }
-  
-  createArticle(token){
-    let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-        httpHeaders.append('Authorization','Bearer '+token);
-       
-    let options = {
-        headers: httpHeaders
-    };     
-    console.log(options)   
-    return this.http.post<any>('https://stuxnetapi.herokuapp.com/api/updateuserlist', options)
-      .subscribe(res => console.log(res));
-  }
-  
-  updateProfileInformation(token) {
-    var headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    headers.append("Authorization", 'Bearer ' + token);
+
+  getProfile(token, tcs) {
+    var config = {
+      headers: {'token': "" + token}
+    };
     
-    const tcs = localStorage.getItem('tc');
-    var obj = { tc: parseInt(tcs) };
+    var bodyParameters = {
+      tc: parseInt(tcs),
+    }
     
-    
-    var body = JSON.stringify(obj);
-    console.log(headers);
-    return this.http.post('https://stuxnetapi.herokuapp.com/api/updateuserlist', body, { headers: headers })
-      .subscribe(res => console.log(res));
+    axios.post( 
+      'https://stuxnetapi.herokuapp.com/api/customer/updateUserList',
+      bodyParameters,
+      config
+    ).then((response) => {
+      this.profile = response.data;
+      console.log("testPost _>", response, 'win', this.profile); // bitince uçur burayı
+    }).catch((error) => {
+      console.log(error)
+    });
+    console.log(this.profile);
   }
 
   ngAfterViewInit() {
