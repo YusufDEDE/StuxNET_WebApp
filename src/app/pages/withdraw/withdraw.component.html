@@ -26,17 +26,17 @@
           <div class="card-header">
             <h3 class="card-title">Gerekli Bilgileri Girin!</h3>
           </div>
-          <form [formGroup]="">
+          <form [formGroup]="withDrawForm" (ngSubmit)="onSubmit()">
             <div class="card-body">
               <div class="form-group">
                 <label for="exampleInputPassword1">Para Çekilecek Hesap</label>
-                <select class="form-control">
-                  <option *ngFor="let opt of accounts" [value]="opt.accNo" [selected]="opt.selected">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.balance}}</option>                
+                <select formControlName="additionalNo" id="additionalNo" class="form-control">
+                  <option *ngFor="let opt of accounts" [value]="opt.additionalNo" [selected]="opt.selected">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.balance}}</option>                
                 </select>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword2">Çekilecek Miktar</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Miktar">
+                <input formControlName="withDraw" id="withDraw" type="number" class="form-control"  placeholder="Miktar">
               </div>
             </div>
             <!-- /.card-body -->

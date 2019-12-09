@@ -28,7 +28,7 @@
             <form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Ek Numara</label>
+                  <label for="exampleInputPassword1">Hesap Numarası</label>
                   <select formControlName="additionalNo" id="additionalNo" class="form-control">
                       <option *ngFor="let opt of accounts" [value]="opt.additionalNo">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.balance}}</option>
                   </select>
