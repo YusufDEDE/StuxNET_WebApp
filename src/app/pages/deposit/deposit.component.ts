@@ -30,11 +30,9 @@ export class DepositComponent implements OnInit {
   ngOnInit() {
     
     this.depositForm = this.formBuilder.group({
-      additionalNo:[],
+      additionalNo:[''],
       deposit: ['', Validators.required]
      });
-
-     
 
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
@@ -49,11 +47,15 @@ export class DepositComponent implements OnInit {
   }
 
   onSubmit() {
-    const currentUser = this.authenticationService.currentUserValue;
-    this.tc = localStorage.getItem("tc");
-    this.depositAdd(currentUser.token, this.tc, this.f.additionalNo.value, this.f.deposit.value);
-    this.f.additionalNo.setValue('');
-    this.f.deposit.setValue('');
+    if(this.f.deposit.value == 0 || this.f.additionalNo.value == 0 || this.f.deposit.value <1){
+      this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz!");
+    }else{
+      const currentUser = this.authenticationService.currentUserValue;
+      this.tc = localStorage.getItem("tc");
+      this.depositAdd(currentUser.token, this.tc, this.f.additionalNo.value, this.f.deposit.value);
+      this.f.additionalNo.setValue('');
+      this.f.deposit.setValue('');
+    }
   }
 
   getAccount(token, tc) {
