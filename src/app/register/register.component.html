@@ -4,9 +4,9 @@
       </div>
   <div class="card">
     <div class="card-body register-card-body">
-      <form [formGroup]="registerForm">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="input-group mb-3">
-          <input name="firstName" type="text" class="form-control" placeholder="Ad" autofocus maxlength="20"/>
+          <input formControlName="firstName" id="firstName" name="firstName" type="text" class="form-control" placeholder="Ad" autofocus maxlength="20"/>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input name="lastName" type="text" class="form-control" placeholder="Soyad" maxlength="20"/>
+          <input formControlName="lastName" id="lastName" name="lastName" type="text" class="form-control" placeholder="Soyad" maxlength="20"/>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input name="tc"
+          <input formControlName="tc" id="tc" name="tc"
                  type="number" 
                  min="10000000000"
                  max="99999999999"
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-            <input name="pw" type="password" class="form-control" placeholder="Şifre" minlength="6" maxlength="12" />
+            <input formControlName="pw" id="pw" name="pw" type="password" class="form-control" placeholder="Şifre" minlength="6" maxlength="12" />
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -59,7 +59,7 @@
               </div>
             </div>
             <div class="input-group mb-3">
-                <input name="birthDate" type="date" class="form-control" />
+                <input formControlName="birthDate" id="birthDate" name="birthDate" type="date" class="form-control" />
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="far fa-calendar-alt"></span>
@@ -67,7 +67,7 @@
                 </div>
               </div>
               <div class="input-group mb-3">
-                  <input name="address" type="text" class="form-control" placeholder="Adres" maxlength="50"/>
+                  <input formControlName="address" id="address" name="address" type="text" class="form-control" placeholder="Adres" maxlength="50"/>
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <span class="far fa-map"></span>
@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input name="phone" type="number" class="form-control" pattern=“\d{11}”  placeholder="Telefon Numarası" />
+                    <input formControlName="phone" id="phone" name="phone" type="number" class="form-control" pattern=“\d{11}”  placeholder="Telefon Numarası" />
                     <div class="input-group-append">
                       <div class="input-group-text">
                         <span class="fas fa-phone-square"></span>
@@ -83,7 +83,7 @@
                     </div>
                   </div>
         <div class="input-group mb-3">
-          <input name="mail" type="email" class="form-control" placeholder="Email" maxlength="20" />
+          <input formControlName="mail" id="mail" name="mail" type="email" class="form-control" placeholder="Email" maxlength="20" />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
