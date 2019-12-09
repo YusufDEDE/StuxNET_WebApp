@@ -3,6 +3,7 @@ import { AppService } from 'src/app/utils/services/app.service';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-deposit',
@@ -14,10 +15,10 @@ export class DepositComponent implements OnInit {
   url:string = 'https://stuxnetapi.herokuapp.com';
   success:any;
   tc:any;
-  additNo:number;
+  additionalNo:number;
   deposit:any;
   accounts:any [] = [];
-  loginForm: FormGroup;
+  depositForm: FormGroup;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -28,10 +29,12 @@ export class DepositComponent implements OnInit {
 
   ngOnInit() {
     
-    this.loginForm = this.formBuilder.group({
-      tc: ['', Validators.required],
-      pw: ['', Validators.required]
+    this.depositForm = this.formBuilder.group({
+      additionalNo:[],
+      deposit: ['', Validators.required]
      });
+
+     
 
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
@@ -39,10 +42,18 @@ export class DepositComponent implements OnInit {
     this.getAccount(currentUser.token, this.tc);
   }
 
-  get f() { return this.loginForm.controls; } 
+  get f() { return this.depositForm.controls; } 
   
-  getAccountInfo(additNo:number, deposit:number){
-    console.log(additNo, deposit);
+  getAccountInfo(additionalNo:number, deposit:number){
+    console.log(additionalNo, deposit);
+  }
+
+  onSubmit() {
+    const currentUser = this.authenticationService.currentUserValue;
+    this.tc = localStorage.getItem("tc");
+    this.depositAdd(currentUser.token, this.tc, this.f.additionalNo.value, this.f.deposit.value);
+    this.f.additionalNo.setValue('');
+    this.f.deposit.setValue('');
   }
 
   getAccount(token, tc) {
