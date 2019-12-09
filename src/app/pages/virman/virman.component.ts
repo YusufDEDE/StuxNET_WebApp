@@ -14,10 +14,11 @@ export class VirmanComponent implements OnInit {
   url:string = 'https://stuxnetapi.herokuapp.com';
   success:any;
   tc:any;
-  additNo:number;
-  virman:any;
+  sendAddit:number;
+  recAddit:number;
+  money:any;
   accounts:any [] = [];
-  loginForm: FormGroup;
+  virmanForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,9 +28,10 @@ export class VirmanComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      tc: ['', Validators.required],
-      pw: ['', Validators.required]
+    this.virmanForm = this.formBuilder.group({
+      sendAddit:[''],
+      recAddit:[''],
+      money:['',Validators.required]        //-------
      });
 
     const currentUser = this.authenticationService.currentUserValue;
@@ -38,10 +40,28 @@ export class VirmanComponent implements OnInit {
     this.getAccount(currentUser.token, this.tc);
   }
 
-  get f() { return this.loginForm.controls; } 
+  get f() { return this.virmanForm.controls; } 
 
   getAccountInfo(additNo:number, deposit:number){
     console.log(additNo, deposit);
+  }
+
+  onSubmit(){
+    if (this.f.money.value <= 0 || this.f.sendAddit.value==0 || this.f.recAddit.value==0) {
+      console.log('asdasdasda'+this.f.money.value);
+      this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz !!")
+    } else if (this.f.sendAddit.value == this.f.recAddit.value) {
+      console.log('aasdasd'+this.f.sendAddit.value);
+      console.log('qweqwe'+this.f.recAddit.value);
+      this.alertService.error("Gönderici ile alıcı hesap aynı olamaz !!")
+    } else {
+      const currentUser = this.authenticationService.currentUserValue;
+      this.tc = localStorage.getItem("tc");
+      this.virmanAdd(currentUser.token, this.tc, this.f.sendAddit.value, this.f.recAddit.value, this.f.money.value);
+      this.f.sendAddit.setValue('');
+      this.f.recAddit.setValue('');
+      this.f.money.setValue('');
+    }
   }
 
   getAccount(token, tc) {
@@ -63,22 +83,24 @@ export class VirmanComponent implements OnInit {
     });
   }
 
-  virmanAdd(token, tc, additNo, virman) {
+
+  virmanAdd(token, tc, sendAddit, recAddit, money) {
     var config = {
       headers:{'token': "" + token}
     }
     var bodyParameters = {
       tc: parseInt(tc),
-      additNo: parseInt(additNo),
-      virman: parseFloat(virman),
+      sendAddit: parseInt(sendAddit),
+      recAddit:parseInt(recAddit),
+      money: parseFloat(money),
     }
-    axios.post(this.url+'/api/account/deposit',
+    axios.post(this.url+'/api/account/virman',
       bodyParameters,
       config
     ).then((response) => {
       
       this.success = response.data.recordset[0];
-      if(!this.success || parseInt(virman) < 1){
+      if(!this.success || parseFloat(money) <= 0){
         this.alertService.error("Virman işlemi başarısız!");
       }else{
         this.alertService.success("Virman işlemi başarılı!");
