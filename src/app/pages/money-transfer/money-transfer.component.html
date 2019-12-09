@@ -28,17 +28,19 @@
                   <th>Alıcı Hesap</th>
                   <th>Gönderilen Miktar</th>
                   <th>İşlem Türü</th>
-                  <th>  </th>
+                  <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr *ngFor="let monTrans of moneyTransfer">
-                  <td>{{monTrans.SENDER}}</td>
+                  <td>{{monTrans.SENDER}} <a href="/money-transfer"><i class="fas fa-eye float-sm-right"></i></a> </td>
                   <td>{{monTrans.RECIPIENT}}</td>
                   <td>{{monTrans.PAY}}</td>
                   <td>{{monTrans.ACTIVITY}}</td>
                   <td>
-                    <span style="color: red;" class="fas fa-arrow-alt-circle-right"></span>
+                    <span *ngIf="monTrans.senderAccNo == accNo && monTrans.ACTIVITY == 'HAVALE' " style="color: red;" class="fas fa-arrow-right fa-lg"></span>
+                    <span *ngIf="monTrans.senderAccNo != accNo && monTrans.ACTIVITY == 'HAVALE' " style="color: green;" class="fas fa-arrow-left fa-lg"></span>
+                    <span *ngIf="monTrans.ACTIVITY == 'VIRMAN' " style="color: rgb(10, 156, 192);" class="fas fa-arrows-alt fa-lg"></span>
                   </td>
                 </tr>                         
                 </tbody>

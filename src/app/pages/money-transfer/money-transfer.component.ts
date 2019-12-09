@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import axios from 'axios';
+import { parse } from 'querystring';
 
 @Component({
   selector: 'app-money-transfer',
@@ -12,6 +13,7 @@ export class MoneyTransferComponent implements OnInit {
 
   tc: any;
   moneyTransfer: any[] = [];
+  accNo:any;
 
   constructor(
     public appService: AppService,
@@ -21,6 +23,8 @@ export class MoneyTransferComponent implements OnInit {
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
     this.getMoneyTransfer(currentUser.token, this.tc);
+    this.accNo = String(localStorage.getItem('accNo'));
+    console.log("accno init ", this.accNo);
   }
 
   getMoneyTransfer(token, tcs) {
