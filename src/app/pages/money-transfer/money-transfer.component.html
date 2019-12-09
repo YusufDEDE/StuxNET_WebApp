@@ -19,9 +19,6 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Transferler</h3>
-            </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example2" class="table table-bordered table-hover">
@@ -31,7 +28,7 @@
                   <th>Alıcı Hesap</th>
                   <th>Gönderilen Miktar</th>
                   <th>İşlem Türü</th>
-                  <th><span style="color:green;" class="fab fa-affiliatetheme"></span></th>
+                  <th>  </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,7 +37,9 @@
                   <td>{{monTrans.RECIPIENT}}</td>
                   <td>{{monTrans.PAY}}</td>
                   <td>{{monTrans.ACTIVITY}}</td>
-                  <td><span class="fas fa-arrow-alt-circle-right"></span></td>
+                  <td>
+                    <span style="color: red;" class="fas fa-arrow-alt-circle-right"></span>
+                  </td>
                 </tr>                         
                 </tbody>
               </table>

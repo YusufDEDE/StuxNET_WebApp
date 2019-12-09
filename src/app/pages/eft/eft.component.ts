@@ -3,6 +3,7 @@ import { AppService } from 'src/app/utils/services/app.service';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-eft',
@@ -28,7 +29,8 @@ export class EftComponent implements OnInit {
     private formBuilder: FormBuilder,
     public appService: AppService,
     private authenticationService: AppService,
-    private alertService: ToastrService
+    private alertService: ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -60,7 +62,7 @@ export class EftComponent implements OnInit {
     if(this.f.money.value <= 0 || this.f.sendAddit.value == 0){
 
       this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz!");
-    }else{
+    } else{
       const currentUser = this.authenticationService.currentUserValue;
       this.tc = localStorage.getItem("tc");
       this.eftAdd(currentUser.token, this.tc, this.f.sendAddit.value, this.f.recAcc.value,this.f.recAddit.value,this.f.money.value);
@@ -84,7 +86,7 @@ export class EftComponent implements OnInit {
       config
     ).then((response) => {
       this.accounts = response.data;
-      console.log("eft_> ", this.accounts);
+      console.log("eft_> ", response.data);
     }).catch((error) => {
       console.log(error)
     });
@@ -106,12 +108,13 @@ export class EftComponent implements OnInit {
       bodyParameters,
       config
     ).then((response) => {
-      console.log(response.data)
-      this.success = response.data.recordset[0];
-      if(!this.success || parseFloat(money) < 1){
+      console.log("res", response.data.status)
+      this.success = response.data;
+      if(parseFloat(money) <= 0 || this.success.status == 500 ){
         this.alertService.error("EFT işlemi başarısız!");
       }else{
         this.alertService.success("EFT işlemi başarılı!");
+        this.router.navigate(['/accountlist']);
       }
       console.log("eft_> ", this.success);
     }).catch((error) => {

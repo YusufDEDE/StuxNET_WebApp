@@ -3,6 +3,7 @@ import { AppService } from 'src/app/utils/services/app.service';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 import { of } from 'rxjs';
 
 @Component({
@@ -24,7 +25,8 @@ export class DepositComponent implements OnInit {
     private formBuilder: FormBuilder,
     public appService: AppService,
     private authenticationService: AppService,
-    private alertService: ToastrService
+    private alertService: ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -97,6 +99,7 @@ export class DepositComponent implements OnInit {
         this.alertService.error("Para yatırma işlemi başarısız!");
       }else{
         this.alertService.success("Para yatırma işlemi başarılı!");
+        this.router.navigate(['/accountlist']);
       }
       console.log("deposit_> ", this.success);
     }).catch((error) => {

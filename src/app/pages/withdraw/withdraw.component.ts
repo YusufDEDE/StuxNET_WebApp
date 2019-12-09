@@ -3,6 +3,7 @@ import { AppService } from 'src/app/utils/services/app.service';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -25,7 +26,8 @@ export class WithdrawComponent implements OnInit {
     private formBuilder: FormBuilder,
     public appService: AppService,
     private authenticationService: AppService,
-    private alertService: ToastrService
+    private alertService: ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -97,6 +99,7 @@ export class WithdrawComponent implements OnInit {
         this.alertService.error("Para çekme işlemi başarısız!");
       }else{
         this.alertService.success("Para çekme işlemi başarılı!");
+        this.router.navigate(['/accountlist']);
       }
       console.log("withdraw_> ", this.success);
     }).catch((error) => {

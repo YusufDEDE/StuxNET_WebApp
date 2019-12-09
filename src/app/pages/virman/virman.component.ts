@@ -3,6 +3,7 @@ import { AppService } from 'src/app/utils/services/app.service';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-virman',
@@ -24,7 +25,8 @@ export class VirmanComponent implements OnInit {
     private formBuilder: FormBuilder,
     public appService: AppService,
     private authenticationService: AppService,
-    private alertService: ToastrService
+    private alertService: ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -104,6 +106,7 @@ export class VirmanComponent implements OnInit {
         this.alertService.error("Virman işlemi başarısız!");
       }else{
         this.alertService.success("Virman işlemi başarılı!");
+        this.router.navigate(['/accountlist']);
       }
       console.log("virman_> ", this.success);
     }).catch((error) => {
