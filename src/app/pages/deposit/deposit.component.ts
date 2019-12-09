@@ -43,7 +43,7 @@ export class DepositComponent implements OnInit {
   get f() { return this.depositForm.controls; } 
   
   getAccountInfo(additionalNo:number, deposit:number){
-    console.log(additionalNo, deposit);
+    console.log(additionalNo, deposit); 
   }
 
   onSubmit() {

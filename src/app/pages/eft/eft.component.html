@@ -26,25 +26,25 @@
           <div class="card-header">
             <h3 class="card-title">Gerekli Bilgileri Girin!</h3>
           </div>
-          <form [formGroup]="">
+          <form [formGroup]="eftForm" (ngSubmit)="onSubmit()" >
             <div class="card-body">
               <div class="form-group">
                 <label for="exampleInputPassword1">Transfer Yapan Hesap</label>
-                <select class="form-control">
-                  <option *ngFor="let opt of accounts" [value]="opt.accNo" [selected]="opt.selected">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.balance}}</option>                
+                <select formControlName="sendAddit" id="sendAddit" class="form-control">
+                  <option *ngFor="let opt of accounts" [value]="opt.additionalNo" [selected]="opt.selected">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.balance}}</option>                
                 </select>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Transfer Yapılacak Hesap Numarası</label>
-                <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Alıcı Hesap No">
+                <input formControlName="recAcc" id="recAcc" type="text" class="form-control" id="exampleInputPassword2" placeholder="Alıcı Hesap No">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Transfer Yapılacak Hesap Ek No</label>
-                <input type="text" class="form-control" id="exampleInputPassword3" placeholder="Alıcı Hesabın Ek No">
+                <input formControlName="recAddit" id="recAddit" type="text" class="form-control" id="exampleInputPassword3" placeholder="Alıcı Hesabın Ek No">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword2">Gönderilecek Miktar</label>
-                <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Miktar">
+                <input formControlName="money" id="money" type="text" class="form-control" id="exampleInputPassword4" placeholder="Miktar">
               </div>
             </div>
             <!-- /.card-body -->
