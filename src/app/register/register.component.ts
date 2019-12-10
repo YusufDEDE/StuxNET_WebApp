@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { AppService } from 'src/app/utils/services/app.service';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,9 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     public appService: AppService,
     private authenticationService: AppService,
-    private alertService: ToastrService) {}
+    private alertService: ToastrService,
+    private router:Router
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -93,10 +96,12 @@ export class RegisterComponent implements OnInit {
     ).then((response) => {
       console.log("res data"+response)
       this.success = response.data;
-      if(!this.success){
+      console.log(response.data.status);
+      if(!this.success || response.data.status == 500){
         this.alertService.error("Kayıt başarısız!");
       }else{
         this.alertService.success("Kayıt başarılı!");
+        /* this.router.navigate['/login']; */
       }
       console.log("register_> ", this.success);
     }).catch((error) => {

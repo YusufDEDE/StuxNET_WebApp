@@ -39,7 +39,7 @@
                 <tbody >
                 <tr *ngFor="let account of accounts">
                   <td>{{account.accNo}} - {{account.additionalNo}}</td>
-                  <td>{{account.balance}}</td>
+                  <td>{{account.Balance}} TL</td>
                   <td>{{account["Creation Date"]}}</td> <!-- buraya bakıcaz sonra -->
                   <td align="center"><button (click)='delAccOnclik(account.additionalNo)' type="button" class="btn btn-default btn-sm"><span class="far fa-trash-alt"></span></button></td>
                 </tr>

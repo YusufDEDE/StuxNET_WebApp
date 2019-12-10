@@ -50,7 +50,7 @@ export class WithdrawComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.f.withDraw.value == 0 || this.f.additionalNo.value == 0 || this.f.withDraw.value <1){
+    if(this.f.withDraw.value == 0 || this.f.additionalNo.value == 0 || this.f.withDraw.value <= 0){
       this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz!");
     }else{
       const currentUser = this.authenticationService.currentUserValue;
@@ -93,9 +93,10 @@ export class WithdrawComponent implements OnInit {
       bodyParameters,
       config
     ).then((response) => {
-      console.log(response.data);
-      this.success = response.data.recordset[0];
-      if(!this.success || parseInt(withdraw) < 1){
+      console.log(response.data.status);
+      console.log(parseFloat(withdraw));
+      this.success = response.data;
+      if(response.data.status == 500 || parseFloat(withdraw) <= 0){
         this.alertService.error("Para çekme işlemi başarısız!");
       }else{
         this.alertService.success("Para çekme işlemi başarılı!");

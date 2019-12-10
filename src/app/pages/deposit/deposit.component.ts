@@ -49,7 +49,7 @@ export class DepositComponent implements OnInit {
   }
 
   onSubmit() {
-    if(this.f.deposit.value == 0 || this.f.additionalNo.value == 0 || this.f.deposit.value <1){
+    if(this.f.deposit.value == 0 || this.f.additionalNo.value == 0 || this.f.deposit.value <= 0){
       this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz!");
     }else{
       const currentUser = this.authenticationService.currentUserValue;
@@ -95,7 +95,7 @@ export class DepositComponent implements OnInit {
     ).then((response) => {
       
       this.success = response.data.recordset[0];
-      if(!this.success || parseInt(deposit) < 1){
+      if(!this.success || parseFloat(deposit) <= 0){
         this.alertService.error("Para yatırma işlemi başarısız!");
       }else{
         this.alertService.success("Para yatırma işlemi başarılı!");

@@ -108,7 +108,7 @@ export class EftComponent implements OnInit {
       bodyParameters,
       config
     ).then((response) => {
-      console.log("res", response.data.status)
+      console.log("res", response.data)
       this.success = response.data;
       if(parseFloat(money) <= 0 || this.success.status == 500 ){
         this.alertService.error("EFT işlemi başarısız!");

@@ -101,8 +101,8 @@ export class VirmanComponent implements OnInit {
       config
     ).then((response) => {
       
-      this.success = response.data.recordset[0];
-      if(!this.success || parseFloat(money) <= 0){
+      this.success = response.data;
+      if(this.success.status == 500 || parseFloat(money) <= 0){
         this.alertService.error("Virman işlemi başarısız!");
       }else{
         this.alertService.success("Virman işlemi başarılı!");

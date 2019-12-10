@@ -35,7 +35,7 @@
                 <tr *ngFor="let monTrans of moneyTransfer">
                   <td>{{monTrans.SENDER}} <a href="/money-transfer"><i class="fas fa-eye float-sm-right"></i></a> </td>
                   <td>{{monTrans.RECIPIENT}}</td>
-                  <td>{{monTrans.PAY}}</td>
+                  <td>{{monTrans.pay}} TRY</td>
                   <td>{{monTrans.ACTIVITY}}</td>
                   <td>
                     <span *ngIf="monTrans.senderAccNo == accNo && monTrans.ACTIVITY == 'HAVALE' " style="color: red;" class="fas fa-arrow-right fa-lg"></span>
