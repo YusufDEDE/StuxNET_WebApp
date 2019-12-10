@@ -50,16 +50,14 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     console.log("tc"+this.f.tc.value);
-    if(this.f.tc.value == "" || this.f.firstName.value == "" ||
-    this.f.lastName.value == "" || this.f.birthDate.value == "" ||
-    this.f.address.value == "" || this.f.phone.value == "" || this.f.mail.value == ""){
+    if(this.f.firstName.value == "" || this.f.lastName.value == "" || this.f.address.value == "" || this.f.phone.value == "" || this.f.mail.value == ""){
       this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz!");
     }else{      
-      //this.tc = localStorage.getItem("tc");
+      //this.tc = localStorage.getItem("tc");  
       this.registerAdd( 
         this.f.tc.value, 
         this.f.pw.value, 
-        this.f.firstName.value,
+        this.f.firstName.value,             // TEk kontrol yapıcam
         this.f.lastName.value,
         this.f.birthDate.value,
         this.f.address.value,
