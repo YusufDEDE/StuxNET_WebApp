@@ -78,7 +78,6 @@ export class AccountlistComponent implements OnInit {
       } else{
         this.alertService.error("Hesap Açma işlemi başarısız!");
       }
-      this.router.navigate(['#'])
       console.log("account_> ", response.data.recordset[0]);
     }).catch((error) => {
       console.log(error)
@@ -102,7 +101,7 @@ export class AccountlistComponent implements OnInit {
         this.alertService.error("Hesapta para var! Hesap kapatma işlemi başarısız!");
       } else{
         this.alertService.success("Hesap Kapatma işlemi başarılı!");
-        this.router.navigate(['#'])
+        this.router.navigate(['/accountlist']);
       }
       console.log("account_> ", response.data);
     }).catch((error) => {

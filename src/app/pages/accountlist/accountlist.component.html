@@ -19,7 +19,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <button (click)='newAccOnclik()' type="button"  class="btn btn-success btn-sm float-sm-right " >
+              <button (click)='newAccOnclik()' type="button"  class="btn btn-success btn-sm float-sm-right" onclick="setInterval(function(){window.location.reload(false);},600);" >
                 Hesap Ekle
               </button>
             </div>
@@ -41,7 +41,7 @@
                   <td>{{account.accNo}} - {{account.additionalNo}}</td>
                   <td>{{account.Balance}} TL</td>
                   <td>{{account["Creation Date"]}}</td> <!-- buraya bakıcaz sonra -->
-                  <td align="center"><button (click)='delAccOnclik(account.additionalNo)' type="button" class="btn btn-default btn-sm"><span class="far fa-trash-alt"></span></button></td>
+                  <td align="center"><button (click)='delAccOnclik(account.additionalNo)' type="button" class="btn btn-default btn-sm" onclick="setInterval(function(){window.location.reload(false);},600);"><span class="far fa-trash-alt"></span></button></td>
                 </tr>
                 </tbody>
               </table>
