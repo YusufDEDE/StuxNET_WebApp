@@ -11,7 +11,7 @@ export class HomepageComponent implements OnInit {
 
   constructor(private httpClient:HttpClient) { }
 
-  path:string="http://jsonplaceholder.typicode.com/users"
+  path:string="https://web-paragaranti-pubsub.foreks.com/web-services/securities/exchanges/BIST/groups/E"
   
   rates:Rate[];
 
