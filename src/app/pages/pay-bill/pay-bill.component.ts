@@ -3,6 +3,7 @@ import { AppService } from 'src/app/utils/services/app.service';
 import axios from 'axios';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-pay-bill',
@@ -17,7 +18,8 @@ export class PayBillComponent implements OnInit {
   additNo:number;
   bill:any;
   accounts:any [] = [];
-  loginForm: FormGroup;
+  queryBill:any [] = [];
+  payForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,21 +29,37 @@ export class PayBillComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      tc: ['', Validators.required],
-      pw: ['', Validators.required]
+    this.payForm = this.formBuilder.group({
+      additionalNo: ['', Validators.required],
+      billID: ['', Validators.required],
+      subsID: ['', Validators.required],
      });
-
+    
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
     //this.depositAdd(currentUser.token, this.tc, 1017, 100);
     this.getAccount(currentUser.token, this.tc);
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() { return this.payForm.controls; }
+
 
   getAccountInfo(additNo:number, withdraw:number){
     console.log(additNo, withdraw);
+  }
+
+  paySubmit(){
+    console.log(this.f.additionalNo.value, this.f.billID.value);
+  }
+
+  querySubmit() {
+    console.log(this.f.subsID.value);
+    this.billQuery(this.f.subsID.value);
+    console.log(this.queryBill.length);
+    if(this.queryBill.length < 0){
+      this.alertService.error("Abone fatura bulunamadı!");
+    }
+    this.f.subsID.setValue('');
   }
 
   getAccount(token, tc) {
@@ -63,10 +81,21 @@ export class PayBillComponent implements OnInit {
     });
   }
 
-  payBillAdd(token, tc, additNo, bill) {
-    var config = {
-      headers:{'token': "" + token}
-    }
+  billQuery(subsID){
+    axios.post('https://stuxnet-payment.herokuapp.com/payment', {subsID:subsID})
+      .then((response)=> {
+        this.queryBill = response.data;
+        if(response.data){
+          this.alertService.success(subsID, "Abone numaralı fatura bulundu!");
+        }
+        
+        console.log("bill query :", response.data);
+      }).catch((error)=> {
+         console.log(error); 
+      });
+  }
+
+  payBill(tc, additNo, bill) {
     var bodyParameters = {
       tc: parseInt(tc),
       additNo: parseInt(additNo),
@@ -74,9 +103,7 @@ export class PayBillComponent implements OnInit {
     }
     axios.post(this.url+'/api/account/withdraw',
       bodyParameters,
-      config
     ).then((response) => {
-      
       this.success = response.data.recordset[0];
       if(!this.success || parseInt(bill) < 1){
         this.alertService.error("Fatura Ödeme işlemi başarısız!");
@@ -88,5 +115,6 @@ export class PayBillComponent implements OnInit {
       console.log(error)
     });
   }
+  
 
 }
