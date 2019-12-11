@@ -46,10 +46,14 @@
           </div>
           <div class="input-group mb-3">
               <input
+                formControlName="rePw"
+                id="rePw"
                 name="rePw"
                 type="password"
                 class="form-control"
                 placeholder="Şifre Tekrar"
+                minlength="6"
+                minlength="12"
                 required
               />
               <div class="input-group-append">
@@ -95,7 +99,7 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">
+            <button type="submit" class="btn btn-primary btn-block btn-flat" onclick="setInterval(function(){window.location.reload(false);},1000);">
               Kayıt Ol
             </button>
           </div>

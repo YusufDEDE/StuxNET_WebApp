@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
 
   tc:any;
   pw:string;
+  rePw:string;
   firstName:string;
   lastName:string;
   birthDate:string;
@@ -40,6 +41,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       tc:['',Validators.required],
       pw:['',Validators.required],
+      rePw:['',Validators.required],
       firstName:['',Validators.required],
       lastName: ['', Validators.required],
       birthDate: ['', Validators.required],
@@ -52,8 +54,8 @@ export class RegisterComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-    console.log("tc"+this.f.tc.value);
-    if(this.f.firstName.value == "" || this.f.lastName.value == "" || this.f.address.value == "" || this.f.phone.value == "" || this.f.mail.value == ""){
+    console.log("ASDASD  " + this.f.tc.value + this.f.firstName.value + this.f.pw.value + this.f.lastName.value + this.f.rePw.value + this.f.address.value + this.f.phone.value + this.f.mail.value );
+    if(this.f.firstName.value == "" || this.f.lastName.value == "" || this.f.address.value == "" || this.f.phone.value == "" || this.f.mail.value == "" || this.f.pw.value != this.f.rePw.value){
       this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz!");
     }else{      
       //this.tc = localStorage.getItem("tc");  
@@ -66,7 +68,9 @@ export class RegisterComponent implements OnInit {
         this.f.address.value,
         this.f.phone.value,
         this.f.mail.value);
+      this.f.tc.setValue('');
       this.f.pw.setValue('');
+      this.f.rePw.setValue('');
       this.f.firstName.setValue('');
       this.f.lastName.setValue('');
       this.f.birthDate.setValue('');
@@ -96,12 +100,12 @@ export class RegisterComponent implements OnInit {
     ).then((response) => {
       console.log("res data"+response)
       this.success = response.data;
-      console.log(response.data.status);
+      console.log(response.data);
       if(!this.success || response.data.status == 500){
         this.alertService.error("Kayıt başarısız!");
       }else{
         this.alertService.success("Kayıt başarılı!");
-        /* this.router.navigate['/login']; */
+        this.router.navigate['/login'];
       }
       console.log("register_> ", this.success);
     }).catch((error) => {
