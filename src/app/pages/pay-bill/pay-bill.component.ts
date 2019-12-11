@@ -20,6 +20,7 @@ export class PayBillComponent implements OnInit {
   accounts:any [] = [];
   queryBill:any [] = [];
   payForm: FormGroup;
+  balance:any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,10 +56,6 @@ export class PayBillComponent implements OnInit {
   querySubmit() {
     console.log(this.f.subsID.value);
     this.billQuery(this.f.subsID.value);
-    console.log(this.queryBill.length);
-    if(this.queryBill.length < 0){
-      this.alertService.error("Abone fatura bulunamadı!");
-    }
     this.f.subsID.setValue('');
   }
 
@@ -82,13 +79,17 @@ export class PayBillComponent implements OnInit {
   }
 
   billQuery(subsID){
+    
     axios.post('https://stuxnet-payment.herokuapp.com/payment', {subsID:subsID})
       .then((response)=> {
         this.queryBill = response.data;
-        if(response.data){
+        if(response.data.status == 404){
+          this.alertService.error(subsID, "Abone numaralı fatura bulunamadı!");
+          console.log("ww");
+        }
+        else{
           this.alertService.success(subsID, "Abone numaralı fatura bulundu!");
         }
-        
         console.log("bill query :", response.data);
       }).catch((error)=> {
          console.log(error); 
