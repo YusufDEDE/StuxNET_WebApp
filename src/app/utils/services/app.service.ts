@@ -40,12 +40,12 @@ export class AppService {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
-                    
+                    const currentUser = this.currentUserValue;
+                    this.getAccount(currentUser.token, tc);
                 }
-                const currentUser = this.currentUserValue;
-                this.getAccount(currentUser.token, tc);
-                return user;
+                return user;    
             }));
+            
   }
 
   getAccount(token, tc) {
