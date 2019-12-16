@@ -51,10 +51,10 @@ export class LoginComponent implements OnInit {
             this.loading = true;
             console.log(this.f.tc.value, this.f.pw.value);
             this.authenticationService.login(this.f.tc.value, this.f.pw.value)
-                
                 .pipe(first())
                 .subscribe(
                     data => {
+                        console.log("win", data);
                         if(data.status != true || data.status == 500)
                         {
                             this.alertService.error("Tc veya şifre hatalı!");

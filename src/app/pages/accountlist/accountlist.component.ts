@@ -74,7 +74,7 @@ export class AccountlistComponent implements OnInit {
       status = response.data.recordset[0];
       if(status){
         this.alertService.success("Hesap Açma işlemi başarılı!");
-        ;
+        
       } else{
         this.alertService.error("Hesap Açma işlemi başarısız!");
       }

@@ -1,77 +1,29 @@
 <!-- Content Header (Page header) -->
-<section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h3>Anasayfa</h3>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item active"><a [routerLink]="['/']">Anasayfa</a></li>
-              </ol>
-            </div>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Anasayfa</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><a [routerLink]="['/']">Anasayfa</a></li>
+            </ol>
           </div>
         </div>
-        <!-- /.container-fluid -->
-      </section>
-
-
-         <div class="content">
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <div class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <!--<div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Online Store Visitors</h3>
-                  <a href="javascript:void(0);">View Report</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">820</span>
-                    <span>Visitors Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Since last week</span>
-                  </p>
-                </div>                
-
-                <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This Week
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Last Week
-                  </span>
-                </div>
-              </div>
-            </div> -->
-            <!-- /.card -->
-          
-            <div class="card ">
+            <div class="card card-success">
               <div class="card-header border-0">
                 <h3 class="card-title">Piyasadaki Markalar</h3>
-                <!-- <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-bars"></i>
-                  </a>
-                </div> -->
               </div>
-              <div class="card-body table-responsive p-0">
-                <table class="table table-striped table-valign-middle">
+              <div class="card-body table-responsive p-0" style="height: 400px;">
+                <table class="table table-head-fixed">
                   <thead>
                   <tr>
                     <th>Marka</th>
@@ -93,13 +45,7 @@
                       </small>
                       {{test.key}}
                     </td>
-                    <!-- <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td> -->
                   </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -108,96 +54,63 @@
           </div>
           <!-- /.col-md-6 -->
           <div class="col-lg-6">
-            <!--<div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Sales</h3>
-                  <a href="javascript:void(0);">View Report</a>
-                </div>
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Kredi Tahmini</h3>
               </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">$18,230.00</span>
-                    <span>Sales Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 33.1%
-                    </span>
-                    <span class="text-muted">Since last month</span>
-                  </p>
+              <!-- /.card-header -->
+              <form [formGroup]="predictForm" (ngSubmit)="onSubmit()">
+               <div class="card-body" style="height: 320px;">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
+                    </div>
+                    <input type="number" formControlName="credit" id="credit" class="form-control" placeholder="Kredi miktarı">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-users"></i></span>
+                    </div>
+                    <input type="number"  formControlName="age" id="age" class="form-control" placeholder="Yaş">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fab fa-algolia"></i></span>
+                    </div>
+                    <input type="number"  formControlName="creditCount" id="creditCount" class="form-control" placeholder="Alınan kredi sayısı">
+                  </div>
+                  <div class="row">
+                    <div div class="col-sm-6">
+                    <label for="exampleInputPassword1">Ev Durum</label>
+                    <select formControlName="home" id="home" class="form-control">
+                        <option [value]="0">Evim Yok</option>
+                        <option [value]="1">Evim Var</option>
+                    </select>
+                    </div>
+                    <div div class="col-sm-6">
+                      <label for="exampleInputPassword1">Telefon Durumu</label>
+                      <select formControlName="phoneState" id="phoneState"  class="form-control">
+                          <option [value]="0">Telefonum Yok</option>
+                          <option [value]="1">Telefonum Var</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div>
+                    <div *ngIf="decisionRes">
+                        <h4 style="text-align: center;">{{decisionRes.CrediPorba}} / {{decisionRes.CrediState}}</h4>
+                    </div>
+                  </div>
                 </div>
-                
-
-                <div class="position-relative mb-4">
-                  <canvas id="sales-chart" height="200"></canvas>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" [disabled]="loading">Bilgileri Gönder!</button>
+                  <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>  
                 </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This year
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Last year
-                  </span>
-                </div>
+              </form>
               </div>
-            </div>
-            <!-- /.card -->
-
-            <!--<div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title">Online Store Overview</h3>
-                <div class="card-tools">
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-bars"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                  <p class="text-success text-xl">
-                    <i class="ion ion-ios-refresh-empty"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-up text-success"></i> 12%
-                    </span>
-                    <span class="text-muted">CONVERSION RATE</span>
-                  </p>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                  <p class="text-warning text-xl">
-                    <i class="ion ion-ios-cart-outline"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
-                    </span>
-                    <span class="text-muted">SALES RATE</span>
-                  </p>
-                </div>
-                
-                <div class="d-flex justify-content-between align-items-center mb-0">
-                  <p class="text-danger text-xl">
-                    <i class="ion ion-ios-people-outline"></i>
-                  </p>
-                  <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold">
-                      <i class="ion ion-android-arrow-down text-danger"></i> 1%
-                    </span>
-                    <span class="text-muted">REGISTRATION RATE</span>
-                  </p>
-                </div>
-                
-              </div>
-            </div>-->
+              <!-- /.card -->
           </div>
           <!-- /.col-md-6 -->
         </div>
