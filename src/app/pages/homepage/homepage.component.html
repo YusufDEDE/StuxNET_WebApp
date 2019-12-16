@@ -60,42 +60,52 @@
                 <h3 class="card-title">Kredi Tahmini</h3>
               </div>
               <!-- /.card-header -->
-                <div class="card-body" style="height: 339px;">
+              <form [formGroup]="predictForm" (ngSubmit)="onSubmit()">
+               <div class="card-body" style="height: 320px;">
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
                     </div>
-                    <input type="number" class="form-control" placeholder="Kredi">
+                    <input type="number" formControlName="credit" id="credit" class="form-control" placeholder="Kredi miktarı">
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-users"></i></span>
                     </div>
-                    <input type="number" class="form-control" placeholder="Yaş">
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-home"></i></span>
-                    </div>
-                    <input type="number" class="form-control" placeholder="Ev Sayısı">
+                    <input type="number"  formControlName="age" id="age" class="form-control" placeholder="Yaş">
                   </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fab fa-algolia"></i></span>
                     </div>
-                    <input type="number" class="form-control" placeholder="Kredi sayımı">
+                    <input type="number"  formControlName="creditCount" id="creditCount" class="form-control" placeholder="Alınan kredi sayısı">
                   </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                  <div class="row">
+                    <div div class="col-sm-6">
+                    <label for="exampleInputPassword1">Ev Durum</label>
+                    <select formControlName="home" id="home" class="form-control">
+                        <option [value]="0">Evim Yok</option>
+                        <option [value]="1">Evim Var</option>
+                    </select>
                     </div>
-                    <input type="number" class="form-control" placeholder="Telefon Durumu">
+                    <div div class="col-sm-6">
+                      <label for="exampleInputPassword1">Telefon Durumu</label>
+                      <select formControlName="phoneState" id="phoneState"  class="form-control">
+                          <option [value]="0">Telefonum Yok</option>
+                          <option [value]="1">Telefonum Var</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div>
+                    <h1 style="text-align: center;">Hell</h1>
                   </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Bilgileri Gönder!</button>
                 </div>
+              </form>
               </div>
               <!-- /.card -->
           </div>
