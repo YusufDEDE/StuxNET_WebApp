@@ -51,6 +51,7 @@ export class MenuSidebarComponent implements OnInit, AfterViewInit {
       config
     ).then((response) => {
       this.profile = response.data;
+      console.log("testPost _>", response, 'win', this.profile); // bitince uçur burayı
     }).catch((error) => {
       console.log(error)
     });

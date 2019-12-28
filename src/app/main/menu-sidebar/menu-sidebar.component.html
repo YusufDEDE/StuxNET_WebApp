@@ -1,13 +1,13 @@
-<aside #mainSidebar class="main-sidebar sidebar-dark-primary elevation-4" style="background-image: url(../../../../../assets/img/photo1.png);">
+<aside #mainSidebar class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a [routerLink]="['/']" class="brand-link">
     <img
-      src="assets/img/SmartWallet.png"
+      src="assets/img/StuxNET.ico"
       alt="Bank of StuxNET"
       class="brand-image img-circle elevation-3"
-      style="opacity: .8; background-color: white;"
+      style="opacity: .8"
     />
-    <span class="brand-text font-weight-light">Smart Wallet</span>
+    <span class="brand-text font-weight-light">Bank Of StuxNET</span>
   </a>
 
   <!-- Sidebar -->
@@ -40,6 +40,14 @@
             <i class="nav-icon fas fa-angle-right"></i>
             <p>
               Para Yatır
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/withdraw']" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon fas fa-angle-left"></i>
+            <p>
+              Para Çek
             </p>
           </a>
         </li>
