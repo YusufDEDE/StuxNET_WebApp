@@ -52,67 +52,6 @@
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Kredi Tahmini</h3>
-              </div>
-              <!-- /.card-header -->
-              <form [formGroup]="predictForm" (ngSubmit)="onSubmit()">
-               <div class="card-body" style="height: 320px;">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
-                    </div>
-                    <input type="number" formControlName="credit" id="credit" class="form-control" placeholder="Kredi miktarı">
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fas fa-users"></i></span>
-                    </div>
-                    <input type="number"  formControlName="age" id="age" class="form-control" placeholder="Yaş">
-                  </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fab fa-algolia"></i></span>
-                    </div>
-                    <input type="number"  formControlName="creditCount" id="creditCount" class="form-control" placeholder="Alınan kredi sayısı">
-                  </div>
-                  <div class="row">
-                    <div div class="col-sm-6">
-                    <label for="exampleInputPassword1">Ev Durum</label>
-                    <select formControlName="home" id="home" class="form-control">
-                        <option [value]="0">Evim Yok</option>
-                        <option [value]="1">Evim Var</option>
-                    </select>
-                    </div>
-                    <div div class="col-sm-6">
-                      <label for="exampleInputPassword1">Telefon Durumu</label>
-                      <select formControlName="phoneState" id="phoneState"  class="form-control">
-                          <option [value]="0">Telefonum Yok</option>
-                          <option [value]="1">Telefonum Var</option>
-                      </select>
-                    </div>
-                  </div>
-                  <hr>
-                  <div>
-                    <div *ngIf="decisionRes">
-                        <h4 style="text-align: center;">{{decisionRes.CrediPorba}} / {{decisionRes.CrediState}}</h4>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" [disabled]="loading">Bilgileri Gönder!</button>
-                  <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>  
-                </div>
-              </form>
-              </div>
-              <!-- /.card -->
-          </div>
-          <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
       </div>

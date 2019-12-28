@@ -12,14 +12,11 @@ import { BlankComponent } from './pages/blank/blank.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountlistComponent } from './pages/accountlist/accountlist.component';
-import { AccountTransactionComponent } from './pages/account-transaction/account-transaction.component';
 import { MoneyTransferComponent } from './pages/money-transfer/money-transfer.component';
 import { DepositComponent } from './pages/deposit/deposit.component';
-import { WithdrawComponent } from './pages/withdraw/withdraw.component';
 import { VirmanComponent } from './pages/virman/virman.component';
 import { EftComponent } from './pages/eft/eft.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -36,12 +33,9 @@ import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.c
     MenuSidebarComponent,
     BlankComponent,
     ProfileComponent,
-    RegisterComponent,
     AccountlistComponent,
-    AccountTransactionComponent,
     MoneyTransferComponent,
     DepositComponent,
-    WithdrawComponent,
     VirmanComponent,
     EftComponent,
     HomepageComponent,
